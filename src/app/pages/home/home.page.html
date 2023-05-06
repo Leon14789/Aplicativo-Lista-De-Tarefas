@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary" class="animate__animated animate__bounceInLeft">
+    <ion-title class="text" >LISTA DE TAREFAS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+ 
+  <ion-list>
+    <ion-item *ngIf="ColecaoTarefas.length < 1">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="text">ATENÇÃO</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+         <H2  class="text">Para Adicionar uma nova Tarefa precione + <br>
+          Após concluir ela, Delete ou Anexe como Finalizada</H2>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    <ion-item-sliding *ngFor="let item of ColecaoTarefas">
+      <ion-item (click)="AtualizarTarefas(item)">
+        <ion-label>
+          <h2>{{item.tarefa}}</h2>
+          <p *ngIf="item.status == true">Tarefa Realizada</p>
+          <p *ngIf="item.status == false">Tarefa Pendente</p>
+        
+        </ion-label>
+        <ion-icon slot="start" name="information-circle" color="danger" *ngIf="!item.status"></ion-icon>
+        <ion-icon slot="start" name="checkmark-circle" color="success" *ngIf="item.status"></ion-icon>
+      </ion-item>
+  
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="DeletarTarefa(item)">
+          Apagar
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
+  
+
+  <ion-fab  slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="AddTarefas()" class="animate__animated animate__pulse">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+</ion-content>
