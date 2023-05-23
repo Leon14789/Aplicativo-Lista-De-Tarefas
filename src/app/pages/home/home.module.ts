@@ -9,6 +9,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 
+import { BannerAdComponent } from '../../components/banner-ad/banner-ad.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +18,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, BannerAdComponent]
 })
 export class HomePageModule {}

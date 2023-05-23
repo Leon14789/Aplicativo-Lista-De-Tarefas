@@ -6,7 +6,15 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
+  },
+
+  "plugins": {
+  "AdMob": {
+    "appId": "ca-app-pub-9861532517570088~6368273007"
   }
+}
+
+
 };
 
 export default config;

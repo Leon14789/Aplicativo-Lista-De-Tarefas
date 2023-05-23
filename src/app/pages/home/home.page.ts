@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { AdMob } = Plugins;
 import { TarefaService } from 'src/app/Services/tarefa.service';
 
 
@@ -13,7 +15,10 @@ export class HomePage implements OnInit {
 
 ColecaoTarefas : any[]=[]
 
+
+
   constructor(
+    
     private alertCtrl : AlertController,
     private TarefaService : TarefaService,
     private actionSheetCtrl : ActionSheetController
@@ -30,8 +35,12 @@ ColecaoTarefas : any[]=[]
   }
 
   ngOnInit() {
+    this.initializeAdMob();
   }
 
+  async initializeAdMob() {
+    await AdMob['initialize']();
+  }
   
 
   async AddTarefas() {
@@ -102,4 +111,7 @@ ColecaoTarefas : any[]=[]
     });
     await actionSheet.present();
   }
+
+
+  
 }
